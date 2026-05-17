@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"/Users/christianchime/Desktop/DC Amsterdam/\")",
+      "Read(//Users/christianchime/Desktop/DC Amsterdam/**)"
+    ]
+  }
+}

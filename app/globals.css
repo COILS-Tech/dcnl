@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply text-accent text-sm font-bold uppercase tracking-widest;
+  }
+  .section-heading {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black text-primary mt-2 lowercase;
+  }
+  .btn-primary {
+    @apply bg-accent text-primary font-bold px-8 py-4 rounded-full uppercase tracking-wide hover:bg-accent-light transition-all text-sm;
+  }
+  .btn-outline {
+    @apply border-2 border-accent text-accent font-bold px-8 py-4 rounded-full uppercase tracking-wide hover:bg-accent hover:text-primary transition-all text-sm;
+  }
+}
