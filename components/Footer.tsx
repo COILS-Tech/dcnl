@@ -118,6 +118,14 @@ export default function Footer({ branches }: FooterProps) {
                   Instagram — Rotterdam
                 </a>
               </li>
+              <li>
+                <a
+                  href="tel:+31684472520"
+                  className="hover:text-accent transition-colors"
+                >
+                  +31 6 8447 2520
+                </a>
+              </li>
             </ul>
           </div>
         </div>
