@@ -21,7 +21,7 @@ const structure: StructureResolver = (S) =>
 export default defineConfig({
   name: 'default',
   title: 'Dominion City NL',
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'd5txu8px',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
   plugins: [structureTool({ structure }), visionTool()],
   schema: {

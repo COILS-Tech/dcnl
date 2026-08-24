@@ -1,7 +1,7 @@
 import { createClient } from 'next-sanity'
 import type { QueryParams } from 'sanity'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'd5txu8px'
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
 
 export const client = projectId
