@@ -13,12 +13,18 @@ function formatDate(dateStr: string) {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
+    timeZone: 'Europe/Amsterdam',
   })
 }
 
 function formatTime(dateStr: string) {
   const date = new Date(dateStr)
-  return date.toLocaleTimeString('en-NL', { hour: '2-digit', minute: '2-digit' })
+  return date.toLocaleTimeString('en-NL', {
+    hour: '2-digit',
+    minute: '2-digit',
+    timeZone: 'Europe/Amsterdam',
+    timeZoneName: 'short',
+  })
 }
 
 export default function EventCard({ event }: EventCardProps) {
@@ -27,7 +33,7 @@ export default function EventCard({ event }: EventCardProps) {
 
   return (
     <div className={`bg-white border border-gray-100 overflow-hidden flex flex-col ${isPast ? 'opacity-70' : ''}`}>
-      {event.image && (
+      {event.image ? (
         <div className="relative h-44 bg-primary-light">
           <Image
             src={urlFor(event.image).width(600).height(350).url()}
@@ -36,7 +42,22 @@ export default function EventCard({ event }: EventCardProps) {
             className="object-cover"
           />
         </div>
-      )}
+      ) : event.localImage ? (
+        <a
+          href={event.localImage.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block bg-primary-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-4px] focus-visible:outline-accent"
+          aria-label={`View full flyer for ${event.title}`}
+        >
+          <Image
+            {...event.localImage}
+            alt={event.localImage.alt}
+            sizes="(min-width: 1024px) 400px, (min-width: 768px) 50vw, 100vw"
+            className="h-auto w-full"
+          />
+        </a>
+      ) : null}
 
       <div className="p-5 flex flex-col flex-1">
         {/* Date badge */}
@@ -50,6 +71,10 @@ export default function EventCard({ event }: EventCardProps) {
         </div>
 
         <h3 className="font-bold text-primary text-lg leading-snug">{event.title}</h3>
+
+        <time dateTime={event.date} className="mt-2 text-sm font-semibold text-primary">
+          {formatTime(event.date)}
+        </time>
 
         {event.location && (
           <p className="text-gray-500 text-sm mt-1 flex items-center gap-1">

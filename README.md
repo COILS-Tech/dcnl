@@ -66,6 +66,12 @@ Access the CMS at `/studio` to manage:
 - ✅ Sermons
 - ✅ Instagram highlights
 
+### Publishing an event
+
+In `/studio`, open **Events**, create an event, select its **Branches**, and add the date, description, location, and flyer under **Event Image**. Enable **Feature on Homepage** to also show it in the central homepage's upcoming events, then click **Publish**. Published updates may take a few minutes to appear because of caching.
+
+Events already linked through a branch's **Events** field continue to appear on that branch page. The Rejoice Amsterdam flyer is also included in the site so the announcement is available without a CMS upload.
+
 ## 🌐 CORS Configuration
 
 Production domains already configured:

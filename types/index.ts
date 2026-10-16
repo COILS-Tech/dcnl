@@ -69,6 +69,12 @@ export interface BranchEvent {
   endDate?: string
   description?: string
   image?: SanityImage
+  localImage?: {
+    src: string
+    width: number
+    height: number
+    alt: string
+  }
   location?: string
   registrationUrl?: string
 }

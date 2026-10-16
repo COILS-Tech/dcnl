@@ -12,6 +12,21 @@ export const branchEvent = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'branches',
+      title: 'Branches',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'branch' }] }],
+      validation: (rule) => rule.required().min(1),
+      description: 'Choose the branch pages where this event should appear. Publish the event to make it visible.',
+    }),
+    defineField({
+      name: 'featuredOnHome',
+      title: 'Feature on Homepage',
+      type: 'boolean',
+      initialValue: false,
+      description: 'Show this published event on the central homepage while it is upcoming.',
+    }),
+    defineField({
       name: 'date',
       title: 'Date & Time',
       type: 'datetime',

@@ -6,9 +6,11 @@ import BranchPhotoCarousel from '@/components/BranchPhotoCarousel'
 import LeaderCard from '@/components/LeaderCard'
 import EventCard from '@/components/EventCard'
 import SermonCard from '@/components/SermonCard'
+import SpecialMeetingAnnouncement from '@/components/SpecialMeetingAnnouncement'
 import { sanityFetch } from '@/sanity/lib/client'
 import { branchBySlugQuery, allBranchSlugsQuery } from '@/sanity/lib/queries'
 import { FALLBACK_BRANCH_MAP } from '@/data/fallbackBranches'
+import { AMSTERDAM_TRANSITION_EVENT, isAmsterdamTransitionEvent, withAmsterdamTransition } from '@/data/amsterdamTransition'
 import type { Branch } from '@/types'
 
 export const revalidate = 60
@@ -69,12 +71,20 @@ export default async function BranchPage({
   params: Promise<{ branch: string }>
 }) {
   const { branch: slug } = await params
-  const branch = withFallbackBranch(await sanityFetch<Branch>(branchBySlugQuery, { slug }), slug)
+  const sourceBranch = withFallbackBranch(await sanityFetch<Branch>(branchBySlugQuery, { slug }), slug)
 
-  if (!branch) notFound()
+  if (!sourceBranch) notFound()
+
+  const branch = withAmsterdamTransition(sourceBranch)
+  const cmsTransitionEvent = branch.events?.find(isAmsterdamTransitionEvent)
+  const events = slug === 'amsterdam'
+    ? [{ ...AMSTERDAM_TRANSITION_EVENT, ...cmsTransitionEvent }, ...(branch.events ?? []).filter(
+        (event) => !isAmsterdamTransitionEvent(event)
+      )]
+    : branch.events ?? []
 
   const hasLeaders = (branch.leaders?.length ?? 0) > 0
-  const hasEvents = (branch.events?.length ?? 0) > 0
+  const hasEvents = events.length > 0
   const hasSermons = (branch.sermons?.length ?? 0) > 0
   const hasImportantDetails = (branch.importantDetails?.length ?? 0) > 0
   const hasMinistryFocus = (branch.ministryFocus?.length ?? 0) > 0
@@ -128,6 +138,8 @@ export default async function BranchPage({
         }
         size="medium"
       />
+
+      {slug === 'amsterdam' && <SpecialMeetingAnnouncement />}
 
       {currentBranchPhotos.length > 0 && (
         <BranchPhotoCarousel
@@ -212,6 +224,11 @@ export default async function BranchPage({
         serviceTimes={branch.serviceTimes ?? []}
         address={branch.address}
         mapEmbedUrl={branch.mapEmbedUrl}
+        addressLabel={
+          slug === 'amsterdam' && /Hoogoorddreef/i.test(branch.address ?? '')
+            ? 'Venue before 1 November 2026'
+            : undefined
+        }
       />
 
       {hasLeaders && (
@@ -238,7 +255,7 @@ export default async function BranchPage({
           </div>
           {hasEvents ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {branch.events!.map((event) => (
+              {events.map((event) => (
                 <EventCard key={event._id} event={event} />
               ))}
             </div>

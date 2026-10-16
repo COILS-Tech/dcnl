@@ -4,9 +4,10 @@ interface ServiceTimesProps {
   serviceTimes: ServiceTime[]
   address?: string
   mapEmbedUrl?: string
+  addressLabel?: string
 }
 
-export default function ServiceTimes({ serviceTimes, address, mapEmbedUrl }: ServiceTimesProps) {
+export default function ServiceTimes({ serviceTimes, address, mapEmbedUrl, addressLabel = 'Address' }: ServiceTimesProps) {
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +58,7 @@ export default function ServiceTimes({ serviceTimes, address, mapEmbedUrl }: Ser
             {address && (
               <div className="mt-8 p-4 bg-primary/5 border-l-4 border-accent">
                 <p className="text-xs text-accent font-semibold uppercase tracking-widest mb-1">
-                  Address
+                  {addressLabel}
                 </p>
                 <address className="not-italic text-gray-700 text-sm whitespace-pre-line">
                   {address}
@@ -71,7 +72,7 @@ export default function ServiceTimes({ serviceTimes, address, mapEmbedUrl }: Ser
             <p className="text-accent text-sm font-semibold uppercase tracking-widest">
               Find Us
             </p>
-            <h2 className="text-3xl font-bold text-primary">Location</h2>
+            <h2 className="text-3xl font-bold text-primary">{addressLabel === 'Address' ? 'Location' : addressLabel}</h2>
             <div className="flex-1 min-h-64 bg-gray-100 overflow-hidden">
               {mapEmbedUrl ? (
                 <iframe

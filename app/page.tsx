@@ -1,21 +1,32 @@
 import Link from 'next/link'
 import HeroBanner from '@/components/HeroBanner'
 import BranchCard from '@/components/BranchCard'
+import EventCard from '@/components/EventCard'
+import SpecialMeetingAnnouncement, { SpecialMeetingNotice } from '@/components/SpecialMeetingAnnouncement'
 import { sanityFetch } from '@/sanity/lib/client'
-import { allBranchesQuery } from '@/sanity/lib/queries'
+import { allBranchesQuery, featuredEventsQuery } from '@/sanity/lib/queries'
 import { FALLBACK_BRANCHES } from '@/data/fallbackBranches'
-import type { BranchSummary } from '@/types'
+import { isAmsterdamTransitionEvent, withAmsterdamTransition } from '@/data/amsterdamTransition'
+import type { BranchEvent, BranchSummary } from '@/types'
 
 export const revalidate = 60
 
 export default async function Home() {
-  const branches: BranchSummary[] = (await sanityFetch<BranchSummary[]>(allBranchesQuery)) ?? []
+  const [branchResults, eventResults] = await Promise.all([
+    sanityFetch<BranchSummary[]>(allBranchesQuery),
+    sanityFetch<BranchEvent[]>(featuredEventsQuery),
+  ])
+  const branches = branchResults ?? []
+  const featuredEvents = (eventResults ?? []).filter((event) => !isAmsterdamTransitionEvent(event))
 
   const featuredBranches = branches.filter((branch) => branch.featuredOnHome !== false)
-  const displayBranches = featuredBranches.length > 0 ? featuredBranches : FALLBACK_BRANCHES
+  const displayBranches = (featuredBranches.length > 0 ? featuredBranches : FALLBACK_BRANCHES)
+    .map((branch) => withAmsterdamTransition(branch))
 
   return (
     <>
+      <SpecialMeetingNotice />
+
       {/* Hero */}
       <HeroBanner
         eyebrow="Netherlands"
@@ -31,6 +42,22 @@ export default async function Home() {
           '/hero/community.jpg',
         ]}
       />
+
+      <SpecialMeetingAnnouncement />
+
+      {featuredEvents.length > 0 && (
+        <section className="bg-gray-50 py-20" aria-labelledby="home-events-title">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="mb-12 text-center">
+              <p className="section-label">What&apos;s On</p>
+              <h2 id="home-events-title" className="section-heading">Upcoming Events</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredEvents.map((event) => <EventCard key={event._id} event={event} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* About Section */}
       <section className="py-24 bg-white">

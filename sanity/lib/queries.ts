@@ -53,12 +53,22 @@ export const branchBySlugQuery = groq`
     leaders[]-> {
       _id, name, role, bio, photo, order
     } | order(order asc),
-    events[]-> {
+    "events": *[_type == "branchEvent" && (
+      ^._id in branches[]._ref || _id in ^.events[]._ref
+    )] {
       _id, title, date, endDate, description, image, location, registrationUrl
     } | order(date desc),
     sermons[]-> {
       _id, title, date, speaker, youtubeUrl, description, series
     } | order(date desc)
+  }
+`
+
+export const featuredEventsQuery = groq`
+  *[_type == "branchEvent" && featuredOnHome == true &&
+    dateTime(coalesce(endDate, date)) >= dateTime(now())
+  ] | order(date asc) {
+    _id, title, date, endDate, description, image, location, registrationUrl
   }
 `
 
