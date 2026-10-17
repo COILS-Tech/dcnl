@@ -10,12 +10,12 @@ export const AMSTERDAM_TRANSITION = {
   street: 'Europaboulevard 10',
   city: '1083 AD Amsterdam',
   email: 'dominioncityamsterdam@gmail.com',
-  ministers: ['Pst. Chris', 'Pst. Norbert', 'Min. Mercy', 'Min. JayKings'],
+  ministers: ['Pst. Norbert', 'Pst. Chris', 'Pst. Leo', 'Pst. Seun', 'Min. Mercy', 'Min. JayKings'],
   flyer: {
     src: '/events/rejoice-amsterdam-2026.jpg',
     width: 1350,
     height: 1688,
-    alt: 'Rejoice Amsterdam special meeting flyer: 1 November 2026 at 10 AM, Convention Center Novotel, with Pst. Chris, Pst. Norbert, Min. Mercy and Min. JayKings.',
+    alt: 'Rejoice Amsterdam special meeting flyer: 1 November 2026 at 10 AM, Convention Center Novotel, Europaboulevard 10, Amsterdam.',
   },
   mapsUrl:
     'https://www.google.com/maps/search/?api=1&query=Convention+Center+Novotel%2C+Europaboulevard+10%2C+1083+AD+Amsterdam',
@@ -28,7 +28,7 @@ export const AMSTERDAM_TRANSITION_EVENT: BranchEvent = {
   title: 'Rejoice Amsterdam — Special Meeting',
   date: AMSTERDAM_TRANSITION.date,
   description:
-    'Celebrate a new chapter with Dominion City Amsterdam at Rejoice Amsterdam, our first service at the new venue. With Pst. Chris, Pst. Norbert, Min. Mercy and Min. JayKings. Join us to gather, worship, grow, and do life together. Everyone is welcome.',
+    'Celebrate a new chapter with Dominion City Amsterdam at Rejoice Amsterdam, our first service at the new venue. With Pst. Norbert, Pst. Chris, Pst. Leo, Pst. Seun, Min. Mercy and Min. JayKings. Join us to gather, worship, grow, and do life together. Everyone is welcome.',
   localImage: AMSTERDAM_TRANSITION.flyer,
   location: `${AMSTERDAM_TRANSITION.venue}, ${AMSTERDAM_TRANSITION.street}, ${AMSTERDAM_TRANSITION.city}`,
 }
