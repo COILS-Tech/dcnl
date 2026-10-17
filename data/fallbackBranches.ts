@@ -113,8 +113,7 @@ export const FALLBACK_BRANCHES: Branch[] = [
       {
         _key: 'rotterdam-address',
         label: 'Meeting Address',
-        value: 'Slinge 775',
-        description: 'Rotterdam, Netherlands',
+        value: 'Suite 5 (Upstairs), Dotterbloemstraat 25, 3053 JV Rotterdam, The Netherlands',
       },
       {
         _key: 'rotterdam-contact',
@@ -164,8 +163,8 @@ export const FALLBACK_BRANCHES: Branch[] = [
           'Training people to lead faithfully in church, work, education, business, and community life.',
       },
     ],
-    address: 'Slinge 775\nRotterdam\nNetherlands',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2461.0361667158445!2d4.4946785!3d51.8941257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c433c7e1a8c47%3A0x7d8c8c8c8c8c8c8c!2sSlinge%20775%2C%20Rotterdam!5e0!3m2!1sen!2snl!4v1234567890',
+    address: 'Suite 5 (Upstairs)\nDotterbloemstraat 25\n3053 JV Rotterdam\nThe Netherlands',
+    mapEmbedUrl: 'https://maps.google.com/maps?q=Dotterbloemstraat%2025%2C%203053%20JV%20Rotterdam%2C%20The%20Netherlands&output=embed',
     instagramHandle: 'dominioncity_rotterdam',
     instagramHighlights: [],
   },

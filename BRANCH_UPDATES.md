@@ -11,7 +11,7 @@ This document tracks all updates made to the Amsterdam and Rotterdam branch page
 ### 2. Map Locations Added
 Both branch pages now feature interactive Google Maps embedded in the "Join Us" section showing:
 - **Amsterdam**: Hoogoorddreef 1, Bijlmer, Amsterdam, Netherlands, 1101 BA
-- **Rotterdam**: Slinge 775, Rotterdam, Netherlands
+- **Rotterdam**: Suite 5 (Upstairs), Dotterbloemstraat 25, 3053 JV Rotterdam, The Netherlands
 
 ### 3. Branch Photo Carousels Added
 Created beautiful image carousels for both branches displaying:
@@ -57,7 +57,7 @@ Located in `/public/branches/amsterdam/`:
 ## Rotterdam Branch
 
 ### Contact Information
-- **Meeting Address**: Slinge 775, Rotterdam, Netherlands
+- **Meeting Address**: Suite 5 (Upstairs), Dotterbloemstraat 25, 3053 JV Rotterdam, The Netherlands
 - **Service Time**: Sunday at 12:00 PM
 - **Email**: dominioncityrotterdam@gmail.com
 - **Instagram**: (check Facebook page)
