@@ -71,6 +71,10 @@ export default function SpecialMeetingAnnouncement() {
                 <span className="block text-gray-600">{AMSTERDAM_TRANSITION.street}</span>
                 <span className="block text-gray-600">{AMSTERDAM_TRANSITION.city}</span>
               </address>
+              <p className="mt-4 font-semibold text-primary">
+                All our Sunday meetings will continue here after 1 November 2026.
+                <span className="mt-1 block text-sm text-gray-600">Every Sunday at 10:00 AM.</span>
+              </p>
             </div>
 
             <a

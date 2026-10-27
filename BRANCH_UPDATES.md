@@ -10,7 +10,7 @@ This document tracks all updates made to the Amsterdam and Rotterdam branch page
 
 ### 2. Map Locations Added
 Both branch pages now feature interactive Google Maps embedded in the "Join Us" section showing:
-- **Amsterdam**: Hoogoorddreef 1, Bijlmer, Amsterdam, Netherlands, 1101 BA
+- **Amsterdam**: Convention Center Novotel, Europaboulevard 10, 1083 AD Amsterdam, The Netherlands
 - **Rotterdam**: Suite 5 (Upstairs), Dotterbloemstraat 25, 3053 JV Rotterdam, The Netherlands
 
 ### 3. Branch Photo Carousels Added
@@ -34,7 +34,7 @@ Created beautiful image carousels for both branches displaying:
 ## Amsterdam Branch
 
 ### Contact Information
-- **Meeting Address**: Hoogoorddreef 1, Bijlmer, Amsterdam, Netherlands, 1101 BA
+- **Meeting Address**: Convention Center Novotel, Europaboulevard 10, 1083 AD Amsterdam (from 1 November 2026; all Sunday meetings continue here).
 - **Service Time**: Sunday at 10:00 AM
 - **Email**: dominioncityamsterdam@gmail.com
 - **Instagram**: @dominioncityamsterdam

@@ -10,7 +10,7 @@ import SpecialMeetingAnnouncement from '@/components/SpecialMeetingAnnouncement'
 import { sanityFetch } from '@/sanity/lib/client'
 import { branchBySlugQuery, allBranchSlugsQuery } from '@/sanity/lib/queries'
 import { FALLBACK_BRANCH_MAP } from '@/data/fallbackBranches'
-import { AMSTERDAM_TRANSITION_EVENT, isAmsterdamTransitionEvent, withAmsterdamTransition } from '@/data/amsterdamTransition'
+import { AMSTERDAM_SUNDAY_VENUE, AMSTERDAM_TRANSITION_EVENT, isAmsterdamTransitionEvent, withAmsterdamTransition } from '@/data/amsterdamTransition'
 import type { Branch } from '@/types'
 
 export const revalidate = 60
@@ -225,8 +225,8 @@ export default async function BranchPage({
         address={branch.address}
         mapEmbedUrl={branch.mapEmbedUrl}
         addressLabel={
-          slug === 'amsterdam' && /Hoogoorddreef/i.test(branch.address ?? '')
-            ? 'Venue before 1 November 2026'
+          slug === 'amsterdam'
+            ? AMSTERDAM_SUNDAY_VENUE.label
             : undefined
         }
       />

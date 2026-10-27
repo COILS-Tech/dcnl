@@ -1,4 +1,5 @@
 import type { Branch } from '@/types'
+import { AMSTERDAM_SUNDAY_VENUE, AMSTERDAM_TRANSITION } from './amsterdamTransition'
 
 export const FALLBACK_BRANCHES: Branch[] = [
   {
@@ -26,12 +27,7 @@ export const FALLBACK_BRANCHES: Branch[] = [
       },
     ],
     importantDetails: [
-      {
-        _key: 'amsterdam-address',
-        label: 'Meeting Address',
-        value: 'Hoogoorddreef 1, Bijlmer',
-        description: 'Amsterdam, Netherlands, 1101 BA',
-      },
+      AMSTERDAM_SUNDAY_VENUE,
       {
         _key: 'amsterdam-contact',
         label: 'Contact',
@@ -82,8 +78,8 @@ export const FALLBACK_BRANCHES: Branch[] = [
     ],
     instagramHandle: 'dominioncity_amsterdam',
     instagramHighlights: [],
-    address: 'Hoogoorddreef 1\nBijlmer, Amsterdam\nNetherlands, 1101 BA',
-    mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2437.0361667158445!2d4.9446785!3d52.3141257!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c60a3c7e1a8c47%3A0x7d8c8c8c8c8c8c8c!2sHoogoorddreef%201%2C%201101%20BA%20Amsterdam!5e0!3m2!1sen!2snl!4v1234567890',
+    address: `${AMSTERDAM_TRANSITION.venue}\n${AMSTERDAM_TRANSITION.street}\n${AMSTERDAM_TRANSITION.city}`,
+    mapEmbedUrl: AMSTERDAM_TRANSITION.mapEmbedUrl,
   },
   {
     _id: 'rotterdam',

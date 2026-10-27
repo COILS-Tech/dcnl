@@ -63,6 +63,11 @@ export default function BranchCard({ branch }: BranchCardProps) {
                   {firstDetail.label}
                 </p>
                 <p className="mt-1 text-gray-600">{firstDetail.value}</p>
+                {firstDetail.description && (
+                  <p className="mt-2 text-sm leading-relaxed text-gray-500">
+                    {firstDetail.description}
+                  </p>
+                )}
               </div>
             ) : branch.address ? (
               <div>
